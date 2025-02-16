@@ -1,0 +1,30 @@
+<div class="d-flex justify-content-between mt-4">
+    <h2 class="mb-0">  Registration for event</h2>  
+  
+  </div>
+  <div class="row mt-4">
+    <div class="col-md-5">
+        <div class="mb-3">
+            <label for="content" class="form-label ">Event ID</label>
+           <!-- //create input with formModel.eventId -->
+          </div>
+    </div>
+    <div class="col-md-5">
+      <div class="mb-3">
+          <label for="content" class="form-label ">Student ID</label>
+          <!-- //create input with formModel.studentId -->
+        </div>
+  </div>
+    <div class="col-md-2">
+        <br>
+        <button (click)="Submit()" class="btn btn-primary mt-1 w-100" >Submit</button>
+    </div>
+</div>
+<div *ngIf="showMessage" class="alert alert-success mt-4" role="alert">
+  {{ responseMessage }}
+</div>
+<div *ngIf="showError" class="alert alert-danger" role="alert">
+  {{errorMessage}}
+</div>
+
+
