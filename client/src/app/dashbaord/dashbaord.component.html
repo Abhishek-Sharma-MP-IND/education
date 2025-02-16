@@ -1,3 +1,105 @@
-<div class="row text-center">
-<h1 class="text-capitalize">Educational-Event-Management-System</h1>
+<div *ngIf="role !=''">
+<app-nav ></app-nav>
+
+<div class="dashboard-container">
+  <h2><img src="assets/team/dashuser.png" alt="">Welcome {{username}}</h2>
+
+
+  <!-- Student Dashboard View -->
+  <ng-container *ngIf="role === 'student'">
+ 
+   
+    <app-register-for-event></app-register-for-event>
+   
+  </ng-container>
+ 
+  <!-- Educator Dashboard View -->
+  <ng-container *ngIf="role === 'educator'">
+ 
+    <app-view-events></app-view-events>
+   
+  </ng-container>
+ 
+  <!-- Institution Dashboard View (Admin) -->
+  <ng-container *ngIf="role === 'institution'">
+  
+    <section class="card">
+      <h2>All Events</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Material</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let event of events; let i = index">
+            <td>{{ event.id}}</td>
+            <td>{{ event.name }}</td>
+            <td>{{ event.description }}</td>
+            <td>{{ event.materials }}</td>
+
+            <td><button class="btn-warning" (click)="onDelete(event.id)">Delete</button></td>
+
+          </tr>
+        </tbody>
+      </table>
+    </section>
+ 
+    <section class="card">
+      <h2>All Resources</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Description</th>
+            <th>Type</th>
+            <th>Availability</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let resource of resources;">
+            <td>{{ resource.id }}</td>
+            <td>{{ resource.description }}</td>
+            <td>{{ resource.resourceType }}</td>
+            <td>{{ resource.availability }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="card">
+          <h2>Search Allocated Resources</h2>
+          <div>
+      <input type="text" [(ngModel)]="eventId" placeholder="Enter Event Id">
+      <button  (click)="fetchAllocatedResources()">Search</button>
+    </div>
+     
+          <table *ngIf="allocatedResources.length !=0" ngElse="#errorMessage">
+            <thead>
+              <tr>
+                <th>Event ID</th>
+                <th>Resource Description</th>
+                <th>Availability</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let allocatedResource of allocatedResources">
+                <td>{{ allocatedResource.id }}</td>
+                <td>{{ allocatedResource.description }}</td>
+                <td>{{ allocatedResource.availability }}</td>
+              </tr>
+            </tbody>
+          </table>
+          <div *ngIf="showMessage">
+            {{responseMessage}}
+          </div>
+         
+        </section>
+  </ng-container>
+</div>
+
 </div>

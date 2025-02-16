@@ -16,28 +16,57 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+@Configuration
+@EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
+    private final UserDetailsService userDetailsService;
+    private final JwtRequestFilter jwtRequestFilter;
+    private final PasswordEncoder passwordEncoder;
 
-public class SecurityConfig  {
+    @Autowired
+    public SecurityConfig(UserDetailsService userDetailsService,
+                          JwtRequestFilter jwtRequestFilter,
+                          PasswordEncoder passwordEncoder) {
+        this.userDetailsService = userDetailsService;
+        this.jwtRequestFilter = jwtRequestFilter;
+        this.passwordEncoder = passwordEncoder;
+    }
 
-        // TODO: implement the security configuration
 
-        // configure CORS and CSRF
-        // configure the routes that are accessible without authentication
-        // configure the routes that are accessible with specific authority
-        // set the permission w.r.t to authorities
-        // - /api/user/register: accessible to everyone
-        // - /api/user/login: accessible to everyone
-        // - /api/institution/event: accessible to INSTITUTION authority
-        // - /api/institution/events: accessible to INSTITUTION authority
-        // - /api/institution/resource: accessible to INSTITUTION authority
-        // - /api/institution/resources: accessible to INSTITUTION authority
-        // - /api/institution/event/allocate-resources: accessible to INSTITUTION authority
-        // - /api/educator/agenda: accessible to EDUCATOR authority
-        // - /api/educator/update-material/{eventId}: accessible to EDUCATOR authority
-        // - /api/student/register/{eventId}: accessible to STUDENT authority
-        // - /api/student/registration-status/{studentId}: accessible to STUDENT authority
-        // - any other route: accessible to authenticated users
-        // configure the session management
-        // add the jwtRequestFilter before the UsernamePasswordAuthenticationFilter
-    
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder);
+    }
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.cors().and().csrf().disable()
+                .authorizeRequests()
+                .antMatchers(HttpMethod.POST, "/api/user/register").permitAll()
+                .antMatchers(HttpMethod.POST, "/api/user/login").permitAll()
+                .antMatchers(HttpMethod.POST, "/api/institution/event").hasAuthority("institution")
+                .antMatchers(HttpMethod.GET, "/api/institution/events").permitAll()
+                .antMatchers(HttpMethod.POST, "/api/institution/resource").hasAuthority("institution")
+                .antMatchers(HttpMethod.GET, "/api/institution/resources").hasAuthority("institution")
+                .antMatchers(HttpMethod.POST, "/api/institution/event/allocate-resources").hasAuthority("institution")
+                .antMatchers(HttpMethod.DELETE, "/api/institution/event/{eventId}").hasAuthority("institution")
+                .antMatchers(HttpMethod.GET, "/api/institution/event/allocated-resources/{eventId}").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/educator/agenda").hasAuthority("educator")
+                .antMatchers(HttpMethod.PUT, "/api/educator/update-material/{eventId}").hasAuthority("educator")
+                .antMatchers(HttpMethod.POST, "/api/student/register/{eventId}").hasAuthority("student")
+                .antMatchers(HttpMethod.GET, "/api/student/registration-status/{studentId}").hasAuthority("student")
+
+                .anyRequest().authenticated()
+                .and()
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+
+        http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
+    }
+
+    @Bean
+    @Override
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
+    }
 }

@@ -7,7 +7,12 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-
-public interface EventRegistrationRepository  {
+@Repository
+public interface EventRegistrationRepository extends JpaRepository <EventRegistration, Long>{
     // extend jpa repostiory and add custom method if needed
+    List<EventRegistration> findByStudentId(Long studentId);
+
+    boolean existsByEventIdAndStudentId(Long eventId, Long studentId);
+
+    
 }

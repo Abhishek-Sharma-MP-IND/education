@@ -1,1 +1,39 @@
-//todo: complete missing code
+<app-nav></app-nav>
+<div class="container">
+  <h2>Event Registration Status</h2>
+  
+  <!-- <div class="search-section">
+    <label for="studentId">Student ID</label>
+    <input type="text" [(ngModel)]="studentId" id="studentId" placeholder="Enter Student ID">
+    <button (click)="fetchBookingDetails()">Search</button>
+  </div> -->
+
+  <div *ngIf="bookingDetails.length > 0">
+    <!-- <h3>Booking Information</h3> -->
+    <table>
+      <thead>
+        <tr>
+          <th>Sr#</th>
+          <th>Status</th>
+          <th>Event</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let booking of bookingDetails; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>Applied</td>
+          <td>
+            <p><strong>Description:</strong> {{ booking.event.description }}</p>
+            <p><strong>Materials:</strong> {{ booking.event.materials }}</p>
+            <p><strong>Name:</strong> {{ booking.event.name }}</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <button routerLink="/dashboard" class="btn-warning"><b>Register For Event</b></button>
+
+  </div>
+
+  <p *ngIf="bookingDetails.length === 0 && studentId">No booking details found.</p>
+</div>

@@ -1,0 +1,113 @@
+.create-event-container {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 2em;
+  border: 1px solid #b3e5fc;
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+}
+
+.create-event-container h2 {
+  text-align: center;
+  color: #090a0a;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.create-event-container .form-group {
+  margin-bottom: 1.5em;
+}
+
+.create-event-container label {
+  display: block;
+  margin-bottom: 0.5em;
+  color: #007bb5;
+}
+
+.create-event-container input,
+.create-event-container select,
+.create-event-container textarea,
+.create-event-container .form-control {
+  width: 100%;
+  padding: 0.75em;
+  margin-bottom: 0.5em;
+  border: 1px solid #b3e5fc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.create-event-container .button-group {
+  display: flex;
+  justify-content: space-between;
+}
+
+.create-event-container button {
+  padding: 0.75em;
+  background-color: #007bb5;
+  color: #ffffff;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 48%;
+  transition: background-color 0.3s;
+}
+
+.create-event-container button:hover {
+  background-color: #005f8b;
+}
+
+.create-event-container .back-button {
+  padding: 0.75em;
+  background-color: #ffe064;
+  color: #000000;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 48%;
+  transition: background-color 0.3s;
+}
+
+.create-event-container .back-button:hover {
+  background-color: #c09b06;
+}
+
+.create-event-container .text-danger {
+  color: red;
+  font-size: 0.875em;
+}
+
+.create-event-container .alert {
+  margin-top: 1em;
+}
+
+.create-event-container .alert-danger {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+}
+
+.create-event-container .alert-success {
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+}
+
+.create-event-container .event-list {
+  margin-top: 2em;
+}
+
+.create-event-container .event-list h2 {
+  text-align: center;
+  color: #007bb5;
+}
+
+.create-event-container .list-group-item {
+  background-color: #ffffff;
+  border: 1px solid #b3e5fc;
+  border-radius: 5px;
+  margin-bottom: 0.5em;
+}

@@ -8,7 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegistrationComponent } from './registration/registration.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { HttpService } from '../services/http.service';
-import { DashbaordComponent } from './dashbaord/dashbaord.component';
+import { DashboardComponent } from './dashbaord/dashbaord.component';
 import { CreateEventComponent } from './create-event/create-event.component';
 import { AddResourceComponent } from './add-resource/add-resource.component';
 import { ResourceAllocateComponent } from './resource-allocate/resource-allocate.component';
@@ -16,20 +16,23 @@ import { ViewEventsComponent } from './view-events/view-events.component';
 import { BookingDetailsComponent } from './booking-details/booking-details.component';
 
 import { RegisterForEventComponent } from './register-for-event/register-for-event.component';
+import { NavComponent } from './shared/nav/nav.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
       RegistrationComponent,
-      DashbaordComponent,    
+      DashboardComponent,    
       CreateEventComponent,
       AddResourceComponent,
       ResourceAllocateComponent,
       ViewEventsComponent,
       BookingDetailsComponent,
-   
-      RegisterForEventComponent
+      RegisterForEventComponent,
+      NavComponent,
+      LandingPageComponent
   ],
   imports: [
     BrowserModule,

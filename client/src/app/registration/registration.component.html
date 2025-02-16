@@ -1,1 +1,52 @@
-//todo: complete missing code..
+<div class="registration-container">
+    <div class="form-card">
+        <h2>Register</h2>
+        <p id="mess">Please enter your details here</p>
+        <form [formGroup]="itemForm" (ngSubmit)="onRegister()">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input id="username" type="text" formControlName="username" placeholder="Username">
+                <div *ngIf="itemForm.get('username')?.invalid && (itemForm.get('username')?.dirty || itemForm.get('username')?.touched)" class="text-danger">
+        <div *ngIf="itemForm.get('username')?.hasError('required')">Username is required.</div>
+        <div *ngIf="itemForm.get('username')?.hasError('pattern')">Username must be 4-15 letters long and contain only alphabets.</div>
+      </div>        
+            </div>
+ 
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input id="email" type="email" formControlName="email" placeholder="name@example.com">
+                <div *ngIf="itemForm.get('email')?.invalid && (itemForm.get('email')?.dirty || itemForm.get('email')?.touched)" class="text-danger">
+        <div *ngIf="itemForm.get('email')?.hasError('required')">Email is required.</div>  
+        <div *ngIf="itemForm.get('email')?.hasError('pattern')">Invalid email address format.</div>
+      </div>
+            </div>
+ 
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input id="password" type="password" formControlName="password" placeholder="********">
+                <div *ngIf="itemForm.get('password')?.invalid && (itemForm.get('password')?.dirty || itemForm.get('password')?.touched)" class="text-danger">
+        <div *ngIf="itemForm.get('password')?.hasError('required')">Password is required.</div>
+        <div *ngIf="itemForm.get('password')?.hasError('pattern')">Password must be at least 8 characters long and include one uppercase letter, one lowercase letter, one digit, and one special character.</div>
+      </div>
+            </div>
+ 
+            <div class="form-group">
+                <label for="role">Role:</label>
+                <select id="role" formControlName="role">
+                    <option value="institution">Institution</option>
+                    <option value="educator">Educator</option>
+                    <option value="student">Student</option>
+                </select>
+                <div *ngIf="itemForm.get('role')?.invalid && itemForm.get('role')?.touched" class="error-message">
+                    Role is required.
+                </div>
+            </div>
+ 
+            <button type="submit" [disabled]="itemForm.invalid">Submit</button>
+        </form>
+        <p><a routerLink="/login" class="login-link">Login Instead?</a></p>
+        <div *ngIf="responseMessage" class="message" [ngClass]="{'success-message': showMessage && !showError, 'error-message': showError}">
+            {{ responseMessage }}
+        </div>
+    </div>
+</div>

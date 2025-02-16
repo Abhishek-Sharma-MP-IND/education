@@ -1,0 +1,27 @@
+<nav class="navbar">
+ 
+
+
+ <div class="brand-name" routerLink="/dashboard"><h1 style="color: rgb(255, 255, 255);"><img src="assets/team/edusync.png" alt="">EduSync</h1></div>
+  <ul>
+   <ng-container *ngIf="role === 'student'">
+
+    <li><a routerLink="/dashboard">Dashboard</a></li>
+    <li><a routerLink="/booking-details">Registration Status</a></li>
+    <!-- <li><a routerLink="/register-for-event">Register for Event</a></li> -->
+    <li><a href="#" (click)="onLogout()">Logout</a></li>
+   </ng-container>
+   <ng-container *ngIf="role === 'educator'">
+
+    <li><a routerLink="/dashboard">View Events</a></li>
+    <li><a href="#" (click)="onLogout()">Logout</a></li>
+   </ng-container>
+   <ng-container *ngIf="role === 'institution'">
+    <li><a routerLink="/dashboard">Dashboard</a></li>
+    <li><a routerLink="/create-event">Create Event</a></li>
+    <li><a routerLink="/add-resource">Add Resource</a></li>
+    <li><a routerLink="/resource-allocate">Allocate Resource</a></li>
+    <li><a href="#" (click)="onLogout()">Logout</a></li>
+   </ng-container>
+  </ul>  
+ </nav> 

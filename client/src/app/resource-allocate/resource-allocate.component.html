@@ -1,1 +1,48 @@
-//todo: complete missing code
+<app-nav></app-nav>
+
+<div class="resource-allocate-container">
+  <h2>Allocate Resources</h2>
+ 
+  <form [formGroup]="itemForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="eventId">Select Event:</label>
+      <select formControlName="eventId" class="form-control" required>
+        <option value="" disabled selected>Select an event</option>
+        <option *ngFor="let event of eventList" [value]="event.id">{{ event.name }}</option>
+      </select>
+      <div *ngIf="itemForm.get('eventId')?.invalid && (itemForm.get('eventId')?.dirty || itemForm.get('eventId')?.touched)" class="text-danger">
+        Event selection is required.
+      </div>
+    </div>
+ 
+    <div class="form-group">
+      <label for="resourceId">Select Resource:</label>
+      <select formControlName="resourceId" class="form-control" required>
+        <option value="" disabled selected>Select a resource</option>
+        <option *ngFor="let resource of resourceList" [value]="resource.id">{{ resource.description }}</option>
+      </select>
+      <div *ngIf="itemForm.get('resourceId')?.invalid && (itemForm.get('resourceId')?.dirty || itemForm.get('resourceId')?.touched)" class="text-danger">
+        Resource selection is required.
+      </div>
+    </div>
+ 
+    <div class="form-group">
+      <label for="allocationDetails">Allocation Details:</label>
+      <textarea formControlName="allocationDetails" rows="3" class="form-control" placeholder="Enter allocation details"></textarea>
+      <div *ngIf="itemForm.get('allocationDetails')?.invalid && (itemForm.get('allocationDetails')?.dirty || itemForm.get('allocationDetails')?.touched)" class="text-danger">
+        Allocation details are required.
+      </div>
+    </div>
+ 
+    <div class="button-group">
+
+      <button type="submit" class="btn btn-primary mt-3" [disabled]="itemForm.invalid">Allocate</button>
+  
+      <button type="submit" class="btn-warning" routerLink="/dashboard">Cancel</button>
+    </div>
+
+  </form>
+ 
+  <div *ngIf="showError" class="alert alert-danger mt-3">{{ errorMessage }}</div>
+  <div *ngIf="showMessage" class="alert alert-success mt-3">{{ responseMessage }}</div>
+</div>

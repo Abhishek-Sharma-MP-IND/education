@@ -1,0 +1,95 @@
+.add-resource {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 2em;
+  border: 1px solid #b3e5fc;
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+}
+
+.add-resource h2 {
+  text-align: center;
+  color: #090a0a;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.add-resource .form-group {
+  margin-bottom: 1.5em;
+}
+
+.add-resource label {
+  display: block;
+  margin-bottom: 0.5em;
+  color: #007bb5;
+}
+
+.add-resource input,
+.add-resource select,
+.add-resource textarea {
+  width: 100%;
+  padding: 0.75em;
+  margin-bottom: 0.5em;
+  border: 1px solid #b3e5fc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+
+.add-resource .button-group {
+  display: flex;
+  justify-content: space-between;
+}
+
+.add-resource button {
+  padding: 0.75em;
+  background-color: #007bb5;
+  color: #ffffff;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 48%;
+  transition: background-color 0.3s;
+}
+
+.add-resource button:hover {
+  background-color: #005f8b;
+}
+
+.add-resource .error-message {
+  color: red;
+  font-size: 0.875em;
+}
+
+.add-resource .success-message {
+  margin-top: 1em;
+  color: #007bb5;
+  text-align: center;
+}
+
+
+.add-resource .btn-warning {
+  padding: 0.9 em;
+  background-color: #ffe064;
+  color: #000000;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 48%;
+  display: block;
+  transition: background-color 0.3s;
+}
+
+.add-resource .btn-warning:hover {
+  background-color: #c09b06;
+}
+
+.add-resource .text-danger {
+  color: red;
+  font-size: 0.875em;
+}
+

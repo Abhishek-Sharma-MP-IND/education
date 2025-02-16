@@ -1,0 +1,139 @@
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+table, th, td {
+  border: 1px solid #b3e5fc;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  background-color: #b3e5fc;
+  color: #007bb5;
+}
+
+tr:nth-child(even) {
+  background-color: #f1f8e9;
+}
+
+
+
+
+body {
+  background-color: #e0f7fa;
+  font-family: Arial, sans-serif;
+}
+
+
+h2 {
+  color: #007bb5;
+  text-align: center;
+}
+
+h3 {
+  color: #007bb5;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-weight: bold;
+  margin-top: 10px;
+  color: #007bb5;
+}
+
+input, select, textarea {
+  padding: 8px;
+  margin: 5px 0;
+  border: 1px solid #b3e5fc;
+  border-radius: 5px;
+  width: 100%;
+}
+
+button {
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #57e420;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+
+  background-color: #36b305;
+
+}
+
+.success-message {
+  color: green;
+  margin-top: 10px;
+}
+
+.error-message {
+  color: red;
+  margin-top: 10px;
+}
+
+
+.card {
+  background-color: #ffffff;
+  border: 1px solid #b3e5fc;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card h2 {
+  color: #000000;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.event-details {
+  margin-bottom: 20px;
+}
+
+.event-details h3 {
+  margin: 0;
+  color: #007bb5;
+}
+
+.event-details p {
+  margin: 5px 0;
+  color: #555;
+}
+
+.message {
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.success-message {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.error-message {
+  background-color: #f8d7da;
+  color: #721c24;
+
+}
+
+
