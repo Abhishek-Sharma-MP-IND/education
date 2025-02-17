@@ -1,15 +1,9 @@
 <app-nav></app-nav>
 <div class="container">
   <h2>Event Registration Status</h2>
-  
-  <!-- <div class="search-section">
-    <label for="studentId">Student ID</label>
-    <input type="text" [(ngModel)]="studentId" id="studentId" placeholder="Enter Student ID">
-    <button (click)="fetchBookingDetails()">Search</button>
-  </div> -->
 
   <div *ngIf="bookingDetails.length > 0">
-    <!-- <h3>Booking Information</h3> -->
+
     <table>
       <thead>
         <tr>
